@@ -57,7 +57,7 @@ function App() {
             {
               taskArray.map((element,index)=>
                 <li
-                  className={editingIndex == index ?
+                  className={editingIndex === index ?
                     "bg-slate-400 mt-2 p-2 rounded flex justify-between animate-fade-in animate-pulse" :
                     "bg-slate-400 mt-2 p-2 rounded flex justify-between animate-fade-in"}
                     key={index}>
