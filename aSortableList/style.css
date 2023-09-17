@@ -1,0 +1,14 @@
+* {
+    font-family:arial;
+  }
+  UL, LI {
+    padding:0;
+    margin:0;
+  }
+  LI {
+    list-style:none;
+    line-height:50px;
+    background-color:#eee;
+    border-bottom:1px solid #ccc;
+    padding-left:1em;
+  }
