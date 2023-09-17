@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "./component/Header"
-import Input from "./component/Input"
-import Button from "./component/Button";
+import Header from "./component/Header.jsx"
+import Input from "./component/Input.jsx"
+import Button from "./component/Button.jsx";
 
 function App() {
 
