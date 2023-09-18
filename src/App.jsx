@@ -31,8 +31,8 @@ function App() {
     setTaskArray(newArray);
   }
 
-  const markOrUnmarkTask = (e)=>{
-    let index = e.target.key;
+  const markOrUnmarkTask = (index)=>{
+    /* let index = e.target.key; */
     const newArray = [...taskArray];
     newArray[index].completed = newArray[index].completed ? false : true;
     setTaskArray(newArray);
@@ -43,14 +43,19 @@ function App() {
     <div className="bg-slate-500 min-h-screen p-2">
       <div className="max-w-2xl mr-auto ml-auto p-2">
         <Header/>
+
         {
           editingIndex === -1 ?
           <Input passInputValue={addTask} initialValue="" btn="Add" isfocus={false}/> :
-          <Input passInputValue={editTask} initialValue={taskArray[editingIndex]?.title} btn="Save" isfocus={true} />
+          <Input passInputValue={editTask}
+          initialValue={taskArray[editingIndex]?.title}
+          btn="Save"
+          isfocus={true}
+          onClickHandlerForCancelBtn={setEditionIndex}
+          argumentsForCancelBtn={[-1]} />
         }
 
         <ul>
-
           {
             taskArray.length === 0 && <h1 className="bg-slate-400 mt-2 p-2 rounded">{"You don't have anything to do"}</h1>
           }
@@ -66,8 +71,8 @@ function App() {
                     <div className="flex items-center gap-2">
                       <input type="checkbox"
                       checked={element.completed}
-                      onChange={markOrUnmarkTask}/>
-                      <p>{element.title}</p>
+                      onChange={markOrUnmarkTask.bind(null,index)}/>
+                      <p className={ element.completed ? "line-through" : "" }>{element.title}</p>
                     </div>
 
                     <div>
@@ -83,7 +88,6 @@ function App() {
                     </div>
               </li>)
             }
-
         </ul>
         
       </div>

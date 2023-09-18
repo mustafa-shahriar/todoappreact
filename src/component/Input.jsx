@@ -1,6 +1,7 @@
 import {useEffect, useState ,useRef} from "react"
+import Button from "./Button";
 
-const Input = ({initialValue,passInputValue , btn , isfocus}) => {
+const Input = ({initialValue,passInputValue , btn , isfocus , onClickHandlerForCancelBtn, argumentsForCancelBtn}) => {
 
     const [text , setText] = useState("");
     const inputRef = useRef(null);
@@ -30,8 +31,8 @@ const Input = ({initialValue,passInputValue , btn , isfocus}) => {
         placeholder="Write you task here"
         ref={inputRef} value={text}
         onChange={onChangeHandlerOfInput} />
-
-        <button type="submit"className="bg-slate-200 rounded pr-2 pl-2 hover:bg-slate-300 font-bold text-slate-800 h-8 ml-3" >{btn}</button>
+        <button type="submit"className="bg-slate-200 rounded pr-2 pl-2 hover:bg-slate-300 font-bold text-slate-800 h-8 ml-3 order-2" >{btn}</button>
+        { isfocus && <Button btnName="cancel" onClickHandler={onClickHandlerForCancelBtn} onClickHandlerArgument={argumentsForCancelBtn} /> }
       </form>
   )
 }
