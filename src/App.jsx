@@ -24,14 +24,15 @@ function App() {
     setTaskArray(newArray);
   }
 
-  const aditTask = (value)=>{
+  const editTask = (value)=>{
     const newArray = [...taskArray];
     newArray[editingIndex].title= value;
     setEditionIndex(-1);
     setTaskArray(newArray);
   }
 
-  const markOrUnmarkTask = (index)=>{
+  const markOrUnmarkTask = (e)=>{
+    let index = e.target.key;
     const newArray = [...taskArray];
     newArray[index].completed = newArray[index].completed ? false : true;
     setTaskArray(newArray);
@@ -45,7 +46,7 @@ function App() {
         {
           editingIndex === -1 ?
           <Input passInputValue={addTask} initialValue="" btn="Add" isfocus={false}/> :
-          <Input passInputValue={aditTask} initialValue={taskArray[editingIndex]?.title} btn="Save" isfocus={true} />
+          <Input passInputValue={editTask} initialValue={taskArray[editingIndex]?.title} btn="Save" isfocus={true} />
         }
 
         <ul>
@@ -65,7 +66,7 @@ function App() {
                     <div className="flex items-center gap-2">
                       <input type="checkbox"
                       checked={element.completed}
-                      onChange={markOrUnmarkTask.bind(null,index)}/>
+                      onChange={markOrUnmarkTask}/>
                       <p>{element.title}</p>
                     </div>
 
